@@ -3,7 +3,7 @@
 fw_installed erlang && return 0
 
 VERSION="18.2-2"
-RELEASE="trusty"
+RELEASE="xenial"
 ARCH="amd64"
 
 fw_get -O http://packages.erlang-solutions.com/site/esl/esl-erlang/FLAVOUR_2_esl/esl-erlang_${VERSION}~ubuntu~${RELEASE}_${ARCH}.deb

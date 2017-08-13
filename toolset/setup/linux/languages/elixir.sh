@@ -6,7 +6,7 @@ fw_installed elixir && return 0
 
 ELIXIR_HOME=$IROOT/elixir
 VERSION="1.4.1-1"
-RELEASE="trusty"
+RELEASE="xenial"
 ARCH="all"
 
 fw_get -O http://packages.erlang-solutions.com/debian/pool/elixir_${VERSION}~ubuntu~${RELEASE}_${ARCH}.deb

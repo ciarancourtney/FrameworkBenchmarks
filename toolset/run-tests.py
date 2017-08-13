@@ -66,7 +66,7 @@ def main(argv=None):
     # Update environment for shell scripts
     os.environ['FWROOT'] = setup_util.get_fwroot()
     os.environ['IROOT'] = os.environ['FWROOT'] + '/installs'
-    # 'Ubuntu', '14.04', 'trusty' respectively
+    # 'Ubuntu', '16.04', 'xenial' respectively
     os.environ['TFB_DISTRIB_ID'], os.environ['TFB_DISTRIB_RELEASE'], os.environ['TFB_DISTRIB_CODENAME'] = platform.linux_distribution()
     # App server cpu count
     os.environ['CPU_COUNT'] = str(multiprocessing.cpu_count())

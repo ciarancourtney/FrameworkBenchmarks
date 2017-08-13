@@ -11,7 +11,7 @@ MATRIX=`$FWROOT/toolset/run-tests.py --list-tests | sed '/FWROOT */d' | sed '/Ti
 
 tee $FWROOT/.travis.yml <<EOF
 sudo: required
-dist: trusty
+dist: xenial
 language: generic
 python:
   - "2.7"

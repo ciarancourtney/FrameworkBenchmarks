@@ -28,7 +28,9 @@ CPLUS_INCLUDE_PATH=/usr/include/postgresql:/usr/include/postgresql/9.3/server:$C
 
 # Instead of compiling from source, just use apt to install onto 
 # host machine
-if [ "$TFB_DISTRIB_CODENAME" == "trusty" ]; then
+if [ "$TFB_DISTRIB_CODENAME" == "xenial" ]; then
+    sudo apt-get -y install libboost1.58-all-dev
+elif [ "$TFB_DISTRIB_CODENAME" == "trusty" ]; then
     sudo apt-get -y install libboost1.54-all-dev
 elif [ "$TFB_DISTRIB_CODENAME" == "precise" ]; then
     sudo apt-get -y install libboost1.48-all-dev
