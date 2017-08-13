@@ -1,1 +1,2 @@
-qemu-system-x86_64 -m 128 -nographic -net nic,model=virtio -net user -kernel $INCLUDEOS_PREFIX/chainloader -initrd acorn &
+echo "Booting IncludeOS Mana server"
+docker run -p 8080:8080 --rm -v $(pwd):/service/build includeos/includeos-qemu:0.10.0.1 build/mana_simple.img
