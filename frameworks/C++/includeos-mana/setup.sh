@@ -13,8 +13,6 @@ docker build --tag includeos/includeos-common:0.10.0.1 --build-arg TAG=dev -f Do
 docker build --tag includeos/includeos-build:0.10.0.1 -f Dockerfile.build .
 docker build --tag includeos/includeos-qemu:0.10.0.1 -f Dockerfile.qemu .
 
-source _env_vars.sh
-
 source _build_app.sh
 
 source _boot_server.sh
