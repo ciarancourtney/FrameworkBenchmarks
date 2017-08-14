@@ -2,7 +2,7 @@
 
 # Based on https://gist.github.com/EvgenyOrekhov/1ed8a4466efd0a59d73a11d753c0167b
 
-fw_installed docker && return 0
+(fw_installed docker || which docker) && return 0
 
 #set -euo pipefail
 #IFS=$'\n\t'
