@@ -50,9 +50,9 @@ void Service::start(const std::string&)
   // Setup a route on GET /
   router.on_get("/plaintext", [](auto, auto res) {
     res->source().set_status_code(http::OK);
-    res->header().set_field(http::header::Server, "IncludeOS/" + OS::version());
-    res->header().set_field(http::header::Content_Type, "text/plain");
-    res->header().set_field(http::header::Date, "Mon, 01 Jan 1970 00:00:01 GMT");
+    res->header().add_field(http::header::Server, "IncludeOS/" + OS::version());
+    res->header().add_field(http::header::Content_Type, "text/plain");
+    res->header().add_field(http::header::Date, "Mon, 01 Jan 1970 00:00:01 GMT");
     res->source().add_body("Hello, world!"s);
     res->send();
   });
