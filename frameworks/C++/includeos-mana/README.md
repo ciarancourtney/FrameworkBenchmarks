@@ -33,5 +33,5 @@ Hello, world!
 ### TODO
 
 * Initial test run will fail (apart from on Travis CI) due to docker failing to run as non-root user until session is logged out and back in.
-* Travis run will fail at _build_app.sh set (CMake file does not exist error)
-* IncludeOS-Mana eventually becomes unresponsive after benchmark has been running for >10sec
+* Travis run will fail at "Building IncludeOS Mana server" step (CMake file does not exist error)
+* IncludeOS-Mana eventually becomes unresponsive after benchmark has been running for >10sec and QEMU CPU will be 100%

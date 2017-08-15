@@ -10,7 +10,7 @@ set -e
 
 # from https://github.com/includeos/includeos-docker-images.git 2017-08-13
 echo "Installing IncludeOS"
-docker build --tag includeos/includeos-common:0.10.0.1 --build-arg TAG=dev -f Dockerfile.common .
+docker build --tag includeos/includeos-common:0.10.0.1 --build-arg TAG=v0.11.0-bundle -f Dockerfile.common .
 docker build --tag includeos/includeos-build:0.10.0.1 -f Dockerfile.build .
 docker build --tag includeos/includeos-qemu:0.10.0.1 -f Dockerfile.qemu .
 
