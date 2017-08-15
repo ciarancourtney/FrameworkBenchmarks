@@ -15,9 +15,6 @@ set(SERVICE_NAME "Mana Simple Example")
 # Name of your service binary
 set(BINARY       "mana_simple")
 
-# Maximum memory can be hard-coded into the binary
-set(MAX_MEM 128)
-
 # Source files to be linked with OS library parts to form bootable image
 set(SOURCES
   service.cpp
@@ -28,13 +25,11 @@ set(SOURCES
 
 if ("$ENV{PLATFORM}" STREQUAL "x86_solo5")
   set(DRIVERS
-      silent_start  # Less output during boot
-      solo5net     # Virtio networking
+      solo5net
     )
 else()
   set(DRIVERS
-      silent_start  # Less output during boot
-      virtionet     # Virtio networking
+      virtionet
     )
 endif()
 
