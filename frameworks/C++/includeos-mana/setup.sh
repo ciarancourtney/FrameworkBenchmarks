@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export INCLUDEOS_VERSION='dev'
+INCLUDEOS_VERSION='807b42488614e4963304ee6ecef75e000f6f7be1'
 
 #fw_depends clang-3.8
 fw_depends docker
@@ -10,7 +10,7 @@ set -e
 
 # from https://github.com/includeos/includeos-docker-images.git 2017-08-13
 echo "Installing IncludeOS"
-docker build --tag includeos/includeos-common:0.10.0.1 --build-arg TAG=v0.11.0-bundle -f Dockerfile.common .
+docker build --tag includeos/includeos-common:0.10.0.1 --build-arg TAG=$INCLUDEOS_VERSION -f Dockerfile.common .
 docker build --tag includeos/includeos-build:0.10.0.1 -f Dockerfile.build .
 docker build --tag includeos/includeos-qemu:0.10.0.1 -f Dockerfile.qemu .
 
