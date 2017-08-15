@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 # Based on https://gist.github.com/EvgenyOrekhov/1ed8a4466efd0a59d73a11d753c0167b
 
@@ -15,6 +15,5 @@ sudo apt-get -y install apt-transport-https ca-certificates \
     && sudo apt-get -y install "linux-image-extra-$(uname -r)" linux-image-extra-virtual \
     && sudo apt-get -y install docker-engine \
     && sudo usermod -aG docker "$USER" \
-    && sudo su --login $USER && echo "\nLogged into docker group so logout/login not required to run docker as non-root user\n" \
     && echo -e "\nDocker installed successfully\n" \
     && touch $IROOT/docker.installed
