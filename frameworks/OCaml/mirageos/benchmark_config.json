@@ -1,0 +1,24 @@
+{
+  "framework": "mirageos",
+  "tests": [{
+    "default": {
+      "setup_file": "setup",
+      "json_url": "None",
+      "plaintext_url": "/plaintext",
+      "port": 8080,
+      "approach": "Stripped",
+      "classification": "Micro",
+      "database": "None",
+      "framework": "mirageos",
+      "language": "OCaml",
+      "orm": "None",
+      "platform": "None",
+      "webserver": "None",
+      "os": "Linux",
+      "database_os": "Linux",
+      "display_name": "MirageOS",
+      "notes": "",
+      "versus": ""
+    }
+  }]
+}
