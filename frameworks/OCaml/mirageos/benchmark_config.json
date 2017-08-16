@@ -3,15 +3,14 @@
   "tests": [{
     "default": {
       "setup_file": "setup",
-      "json_url": "None",
-      "plaintext_url": "/plaintext",
+      "plaintext_url": "/",
       "port": 8080,
       "approach": "Stripped",
       "classification": "Micro",
       "database": "None",
       "framework": "mirageos",
       "language": "OCaml",
-      "orm": "None",
+      "orm": "Raw",
       "platform": "None",
       "webserver": "None",
       "os": "Linux",
