@@ -4,6 +4,10 @@ open Cohttp
 open Cohttp_lwt_unix
 
 let server =
+
+  (* https://github.com/mirage/ocaml-cohttp/issues/545 *)
+  Conduit_lwt_server.set_max_active 1_000;
+
   let callback _conn req body =
 
     let header = Cohttp.Header.init_with "Server" "MirageOS" in
