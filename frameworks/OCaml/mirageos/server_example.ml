@@ -14,4 +14,8 @@ let server =
   in
   Server.create ~mode:(`TCP (`Port 8080)) (Server.make ~callback ())
 
+(* See https://github.com/mirage/ocaml-cohttp/issues/511 *)
+(* https://github.com/samoht/irmin/commit/629c3958f5f8487cf2290efec9d5464ff16e6461 *)
+let () = Lwt.async_exception_hook := ignore
+
 let () = ignore (Lwt_main.run server)
