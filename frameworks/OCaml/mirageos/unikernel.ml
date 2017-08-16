@@ -10,6 +10,7 @@ module Main (CON:Conduit_mirage.S) = struct
       Log.debug (fun f -> f "Got request for %s\n" path);
       let header = Cohttp.Header.init_with "Server" "MirageOS" in
       let headers = Cohttp.Header.add header "Content-Type" "text/plain" in
+      let headers = Cohttp.Header.add headers "Date" "Mon, 01 Jan 1970 00:00:01 GMT" in
       H.respond_string ~headers ~status:`OK ~body:"Hello, world!" ()
     in
 
