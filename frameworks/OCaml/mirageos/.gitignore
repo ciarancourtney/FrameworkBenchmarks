@@ -1,10 +1,2 @@
 _build/
-.mirage.config
-conduit_server
-jbuild
-key_gen.ml
-main.ml
-main.native
-Makefile
-mirage-unikernel-conduit_server-unix.opam
-myocamlbuild.ml
+server_example.native

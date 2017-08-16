@@ -30,11 +30,11 @@ eval `opam config env`
 echo "Installing MirageOS $MIRAGE_VER"
 opam install -y mirage=$MIRAGE_VER
 
-echo "Building MirageOS Conduit HTTP Server"
-# based on https://github.com/mirage/mirage-skeleton/tree/master/device-usage/conduit_server
-mirage configure -t unix --net socket
-make depend
-make
+echo "Installing cohttp dependencies"
+opam install -y cohttp lwt js_of_ocaml cohttp-lwt-unix
+
+echo "Building MirageOS HTTP Server"
+ocamlbuild -pkg cohttp-lwt-unix server_example.native
 
 echo "Booting MirageOS Conduit HTTP Server"
-./conduit_server
+./server_example.native
