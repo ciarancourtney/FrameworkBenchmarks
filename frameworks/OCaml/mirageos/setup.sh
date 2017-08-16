@@ -7,17 +7,17 @@ expr $UBUNTU_VER
 
 echo "Installing Dependencies"
 sudo apt-get update
-sudo apt-get install m4
+sudo apt-get install -yqq m4
 
 echo "Installing OPAM (takes >10min)"
 if (( $UBUNTU_VER >= 16 )); then
-    sudo apt-get install -y opam
+    sudo apt-get install -yqq opam
 else
-    sudo add-apt-repository ppa:avsm/ppa
+    sudo add-apt-repository -y ppa:avsm/ppa
     sudo apt-get update
-    sudo apt-get install ocaml ocaml-native-compilers camlp4-extra opam
+    sudo apt-get install -yqq ocaml ocaml-native-compilers camlp4-extra opam
 fi
-opam init
+opam init --auto-setup
 eval $(opam config env)
 
 echo "Switching to OCaml Compiler $OCAML_VER"
@@ -27,4 +27,4 @@ echo "    Setting up compiler env"
 eval `opam config env`
 
 echo "Installing MirageOS"
-opam install mirage=3.0.5
+opam install -y mirage=3.0.2
