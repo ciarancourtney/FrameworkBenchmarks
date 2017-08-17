@@ -158,6 +158,7 @@ env:
     - "TESTDIR=Python/bottle"
     - "TESTDIR=Python/cherrypy"
     - "TESTDIR=Python/django"
+    - "TESTDIR=Python/django-rumprun"
     - "TESTDIR=Python/falcon"
     - "TESTDIR=Python/flask"
     - "TESTDIR=Python/historical"
