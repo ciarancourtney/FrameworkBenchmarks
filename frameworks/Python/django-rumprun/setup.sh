@@ -1,55 +1,49 @@
 #!/bin/bash
 
-
-
-#fw_depends mysql python3
+fw_depends mysql python3 rumprun
 
 set -e
 
-sudo apt-get install -yqq python3-dev genisoimage
-
-rm -rf venv
-$PY3_ROOT/bin/python3 -m venv venv
-
+# mysql deps
 sudo apt-get install -yqq libmysqlclient-dev
 
+#postgres deps
 sudo apt-get install -yqq libpq-dev
 
+echo "Installing qemu"
+sudo apt-get install -yqq qemu-system-x86
 # uncomment if running on wsl https://github.com/Microsoft/BashOnWindows/issues/1043
 #sudo apt-get install grub-pc-bin
 
-
+echo "Creating virtualenv"
+rm -rf venv
+virtualenv venv --always-copy
 venv/bin/pip install -r requirements.txt
 
-echo "Installing rumpkernel rumprun"
-git clone http://repo.rumpkernel.org/rumprun
-cd rumprun
-git submodule update --init
-./build-rr.sh hw
-
-export PATH="${PATH}:$(pwd)/rumprun/bin"
-
-cd py3-rump
-make
-cd ..
-
+echo "Baking Image"
 genisoimage -r -o main.iso main.py venv/lib/python3.5/site-packages
+rumprun-bake hw_generic python.bin ${IROOT}/rumprun-packages/python3/build/python
 
-rumprun-bake hw_generic python.bin py3-rump/build/python
-
+echo "Creating network tun to VM"
 sudo ip tuntap add tap0 mode tap
 sudo ip addr add 10.0.120.100/24 dev tap0
 sudo ip link set dev tap0 up
 
-rumprun kvm -i \
+echo "Booting VM"
+PY_ISO="${IROOT}/rumprun-packages/python3/images/python.iso"
+rumprun qemu -i -g '-nographic -vga none' \
 	-I if,vioif,'-net tap,ifname=tap0,script=no' \
         -W if,inet,static,10.0.120.101/24 \
-	-b py3-rump/images/python.iso,/python/lib/python3.5 \
+	-b ${PY_ISO},/python/lib/python3.5 \
 	-b main.iso,/python/lib/python3.5/site-packages \
 	-e PYTHONHOME=/python \
         -- python.bin -m main
 
 
-pip install --install-option="--prefix=${PY2_ROOT}" -r $TROOT/requirements.txt
-
-gunicorn --pid=gunicorn.pid hello.wsgi:application -c gunicorn_conf.py --env DJANGO_DB=mysql &
+#rumprun qemu -i -g '-nographic -vga none' \
+#	-I if,vioif,'-net tap,ifname=tap0,script=no' \
+#        -W if,inet,static,10.0.120.101/24 \
+#	-b /home/vagrant/FrameworkBenchmarks/installs/rumprun-packages/python3/images/python.iso,/python/lib/python3.5 \
+#	-b main.iso,/python/lib/python3.5/site-packages \
+#	-e PYTHONHOME=/python \
+#        -- python.bin -m main
