@@ -1,6 +1,6 @@
 #!/bin/bash
 
-fw_depends mysql python3 rumprun
+fw_depends mysql rumprun
 
 set -e
 
@@ -22,7 +22,7 @@ echo "Baking Image"
 cp -R hello/hello venv/lib/python3.5/site-packages/
 cp -R hello/world venv/lib/python3.5/site-packages/
 
-genisoimage -r -o main.iso main.py venv/lib/python3.5/site-packages
+genisoimage -r -o main.iso hello/main.py venv/lib/python3.5/site-packages
 rumprun-bake hw_generic python.bin ${IROOT}/rumprun-packages/python3/build/python
 
 echo "Booting VM using DHCP"
