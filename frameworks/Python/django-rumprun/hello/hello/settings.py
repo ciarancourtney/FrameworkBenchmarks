@@ -13,7 +13,8 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.' + os.environ['DJANGO_DB'], # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        # FIXME permit other DBs   'ENGINE': 'django.db.backends.' + os.environ['DJANGO_DB'], # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'ENGINE': 'mysql.connector.django',
         'NAME': 'hello_world',           # Or path to database file if using sqlite3.
         'USER': 'benchmarkdbuser',       # Not used with sqlite3.
         'PASSWORD': 'benchmarkdbpass',   # Not used with sqlite3.
