@@ -1,15 +1,8 @@
-CherryPy==11.0.0
-  cheroot==5.8.3
-    six==1.10.0
-  portend==2.1.2
-    tempora==1.9
-      pytz==2017.2
-      six==1.10.0
-  six==1.10.0
 Django==1.9.13
 pipdeptree==0.10.1
   pip==9.0.1
 setuptools==36.2.7
+waitress==1.0.2
 wheel==0.29.0
 
 # regen with venv/bin/pipdeptree --freeze > requirements.txt
