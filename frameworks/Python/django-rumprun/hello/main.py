@@ -28,6 +28,8 @@ class Server(object):
             'log.screen': True
         })
 
+        cherrypy.engine.timeout_monitor.unsubscribe()
+
         # This registers a plugin to handle the Django app
         # with the CherryPy engine, meaning the app will
         # play nicely with the process bus that is the engine.

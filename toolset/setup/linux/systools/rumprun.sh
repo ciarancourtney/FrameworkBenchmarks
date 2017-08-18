@@ -38,5 +38,6 @@ pushd python3
 make
 popd
 popd
+popd
 
 touch $IROOT/rumprun.installed
