@@ -25,7 +25,8 @@ class Server(object):
             'server.socket_port': self.PORT,
             'server.thread_pool': 1,
             'engine.autoreload_on': False,
-            'log.screen': True
+            'log.screen': True,
+            'tools.sessions.locking': None,  # don't lock
         })
 
         cherrypy.engine.timeout_monitor.unsubscribe()
@@ -48,10 +49,7 @@ class Server(object):
         if hasattr(engine, "console_control_handler"):
             engine.console_control_handler.subscribe()
 
-        print('eng start')
         engine.start()
-
-        print('eng block')
         engine.block()
 
 

@@ -13,14 +13,8 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        # FIXME permit other DBs   'ENGINE': 'django.db.backends.' + os.environ['DJANGO_DB'], # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'ENGINE': 'mysql.connector.django',
-        'NAME': 'hello_world',           # Or path to database file if using sqlite3.
-        'USER': 'benchmarkdbuser',       # Not used with sqlite3.
-        'PASSWORD': 'benchmarkdbpass',   # Not used with sqlite3.
-        'HOST': os.environ.get('DBHOST', ''),  # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
-        'CONN_MAX_AGE': 30,
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'mydatabase',
     }
 }
 
@@ -97,10 +91,10 @@ TEMPLATE_LOADERS = (
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
+  #  'django.contrib.sessions.middleware.SessionMiddleware',
+ #   'django.middleware.csrf.CsrfViewMiddleware',
+#    'django.contrib.auth.middleware.AuthenticationMiddleware',
+ #   'django.contrib.messages.middleware.MessageMiddleware',
 )
 
 ROOT_URLCONF = 'hello.urls'
@@ -116,10 +110,10 @@ TEMPLATE_DIRS = (
 )
 
 INSTALLED_APPS = (
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.sites',
+ #   'django.contrib.auth',
+ #   'django.contrib.contenttypes',
+ #   'django.contrib.sessions',
+ #   'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Uncomment the next line to enable the admin:
@@ -134,41 +128,6 @@ INSTALLED_APPS = (
 # the site admins on every HTTP 500 error when DEBUG=False.
 # See http://docs.djangoproject.com/en/dev/topics/logging for
 # more details on how to customize your logging configuration.
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': True,
-    'formatters': {
-        'verbose': {
-            'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
-        },
-        'simple': {
-            'format': '%(levelname)s %(message)s'
-        },
-    },
-    'filters': {
-        'require_debug_false': {
-            '()': 'django.utils.log.RequireDebugFalse'
-        }
-    },
-    'handlers': {
-        'mail_admins': {
-            'level': 'ERROR',
-            'filters': ['require_debug_false'],
-            'class': 'django.utils.log.AdminEmailHandler'
-        },
-        'console':{
-            'level': 'ERROR',
-            'class': 'logging.StreamHandler',
-            'formatter': 'simple'
-        },
-    },
-    'loggers': {
-        'django.request': {
-            'handlers': ['mail_admins', 'console'],
-            'level': 'ERROR',
-            'propagate': True,
-        },
-    }
-}
+LOGGING_CONFIG = None
 
 ALLOWED_HOSTS = ['*']

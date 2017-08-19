@@ -22,7 +22,7 @@ echo "Baking Image"
 cp -R hello/hello venv/lib/python3.5/site-packages/
 cp -R hello/world venv/lib/python3.5/site-packages/
 
-genisoimage -r -o main.iso hello/waitress_main.py venv/lib/python3.5/site-packages
+genisoimage -r -o main.iso hello/main_cherrypy.py venv/lib/python3.5/site-packages
 rumprun-bake hw_generic python.bin ${IROOT}/rumprun-packages/python3/build/python
 
 echo "Booting VM using DHCP"
@@ -33,7 +33,7 @@ rumprun qemu -i -g '-nographic -vga none' \
 	-b ${PY_ISO},/python/lib/python3.5 \
 	-b main.iso,/python/lib/python3.5/site-packages \
 	-e PYTHONHOME=/python \
-    -- python.bin -m waitress_main &
+    -- python.bin -m main_cherrypy &
 
 # run using a tun/tap tunnel , will be hosted on 10.0.120.101:8080
 # taps can be problematic on ubuntu, check a MAC is assigned using $ arp -n, if not del and add again
